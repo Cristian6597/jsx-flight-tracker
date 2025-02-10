@@ -1,70 +1,63 @@
 {
-  "pagination": {
-      "limit": 100,
-      "offset": 0,
-      "count": 100,
-      "total": 1669022
-  },
-  "data": [
-      {
-          "flight_date": "2019-12-12",
-          "flight_status": "active",
-          "departure": {
-              "airport": "San Francisco International",
-              "timezone": "America/Los_Angeles",
-              "iata": "SFO",
-              "icao": "KSFO",
-              "terminal": "2",
-              "gate": "D11",
-              "delay": 13,
-              "scheduled": "2019-12-12T04:20:00+00:00",
-              "estimated": "2019-12-12T04:20:00+00:00",
-              "actual": "2019-12-12T04:20:13+00:00",
-              "estimated_runway": "2019-12-12T04:20:13+00:00",
-              "actual_runway": "2019-12-12T04:20:13+00:00"
-          },
-          "arrival": {
-              "airport": "Dallas/Fort Worth International",
-              "timezone": "America/Chicago",
-              "iata": "DFW",
-              "icao": "KDFW",
-              "terminal": "A",
-              "gate": "A22",
-              "baggage": "A17",
-              "delay": 0,
-              "scheduled": "2019-12-12T04:20:00+00:00",
-              "estimated": "2019-12-12T04:20:00+00:00",
-              "actual": null,
-              "estimated_runway": null,
-              "actual_runway": null
-          },
-          "airline": {
-              "name": "American Airlines",
-              "iata": "AA",
-              "icao": "AAL"
-          },
-          "flight": {
-              "number": "1004",
-              "iata": "AA1004",
-              "icao": "AAL1004",
-              "codeshared": null
-          },
-          "aircraft": {
-             "registration": "N160AN",
-             "iata": "A321",
-             "icao": "A321",
-             "icao24": "A0F1BB"
-          },
-          "live": {
-              "updated": "2019-12-12T10:00:00+00:00",
-              "latitude": 36.28560000,
-              "longitude": -106.80700000,
-              "altitude": 8846.820,
-              "direction": 114.340,
-              "speed_horizontal": 894.348,
-              "speed_vertical": 1.188,
-              "is_ground": false
-          }
-      }
+  "favourites": [
+    {
+      "name": "9 Air Co",
+      "start": " Tumxuk Tangwangcheng Airport",
+      "end": "100",
+      "code": "1466",
+      "iata": "AQ1466",
+      "status": "SCHEDULED",
+      "favourites": true
+    },
+    {
+      "id": "799b",
+      "name": "9 Air Co",
+      "start": "Tumxuk Tangwangcheng Airport",
+      "end": "Urumqi",
+      "code": "1466",
+      "iata": "AQ1466",
+      "status": "scheduled",
+      "favourites": true
+    },
+    {
+      "id": "d3e9",
+      "name": "China Postal Airlines",
+      "start": "Daguocun",
+      "end": "Nanjing Lukou International Airport",
+      "code": "9005",
+      "iata": "CF9005",
+      "status": "scheduled",
+      "favourites": true
+    },
+    {
+      "id": "a53f",
+      "name": "YTO Cargo Airlines",
+      "start": "Daguocun",
+      "end": "Noibai International",
+      "code": "9069",
+      "iata": "YG9069",
+      "status": "scheduled",
+      "favourites": true
+    },
+    {
+      "id": "fb11",
+      "name": "China Postal Airlines",
+      "start": "Lanzhou Zhongchuan Airport",
+      "end": "Nanjing Lukou International Airport",
+      "code": "9001",
+      "iata": "CF9001",
+      "status": "scheduled",
+      "favourites": true
+    },
+    {
+      "id": "3d8b",
+      "name": "China Southern Airlines",
+      "start": "Fuyang",
+      "end": "Guangzhou Baiyun International",
+      "code": "3932",
+      "iata": "CZ3932",
+      "status": "scheduled",
+      "favourites": true
+    }
   ]
 }

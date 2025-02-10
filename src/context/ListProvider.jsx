@@ -1,4 +1,3 @@
-
 import { createContext, useState } from 'react';
 
 export const TypeContext = createContext();
@@ -16,7 +15,7 @@ export const ListProvider = ({ children }) => {
 
   return (
     <ListContext.Provider value={{ selectedType, changeType }}>
-      <NameContext.Provider value={{ /* name, updateName */ }}>
+      <NameContext.Provider value={{}}>
         {children}
       </NameContext.Provider>
     </ListContext.Provider>

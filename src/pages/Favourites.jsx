@@ -1,13 +1,28 @@
+import CardFavourites from "@/components/CardFavourite";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ListProvider } from "@/context/ListProvider";
 import { Plane, Search } from "lucide-react";
-import { Link, Outlet } from "react-router";
-import CardList from "../components/CardList";
+import { useEffect, useState } from "react";
+import { Link } from "react-router";
+
+
+const API_URL = "http://localhost:3000/favourites"
+
 
 function Favourites() {
+  //fetch fatta e funzionante, manca da integrarla con le card preferiti
+  const [cards, setCards] = useState([]);
+  const fetchCards = () => {
+    fetch(API_URL)
+      .then((res) => res.json())
+      .then((cards) => setCards(cards))
+      .catch((error) => console.error("Error fetching cards:", error));
+  };
+  
+  useEffect(() => {
+    fetchCards();
+  }, []);
   return (
-    <ListProvider>
       <div className="container-main mx-auto flex flex-col items-center bg-gradient-to-b from-emerald-100 h-full">
         <div className="container-top mx-auto w-full flex flex-col items-center">
           <div className="flex-1 flex w-full bg-emerald-100 border-4 border-emerald-100 border-dashed p-2 rounded-b-lg justify-center items-center">
@@ -36,8 +51,8 @@ function Favourites() {
             </div>
           </div>
         </div>
+        <CardFavourites cards={cards}/>
       </div>
-    </ListProvider>
   );
 }
 

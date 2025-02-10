@@ -6,32 +6,43 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Plane, Search } from "lucide-react";
 
-const API_URL =
-  "https://api.aviationstack.com/v1/flights?access_key=aa7674c8146c6b86a3e10a3274aba004&limit=1";
-function App() {
-  const [cards, setCards] = useState([]);
+const API_URL = `https://api.aviationstack.com/v1/flights?access_key=cfb26a39c49d8da903edc02d3b2fc85d&limit=9&flight_iata_code=`;
 
-  const fetchCards = async () => {
+function App() {
+  const [cards, setCards] = useState([]);  //card
+  const [flightCode, setFlightCode] = useState("");  // codice di volo
+
+  // Funzione per fare la fetch con codice
+  const fetchCards = async (code) => {
+    const url = `${API_URL}${code}`;
     try {
-      const response = await fetch(API_URL);
+      const response = await fetch(url);
       const result = await response.json();
 
       if (result && result.data) {
         setCards(result.data);
       } else {
         console.error("Nessun dato trovato nella risposta API:", result);
+        setCards([]); 
       }
     } catch (error) {
       console.error("Errore nel recupero dei dati:", error);
     }
   };
 
+  // Funzione per il tasto cerca
+  const handleSearch = () => {
+    if (flightCode) {
+      fetchCards(flightCode); // Passa il codice IATA alla funzione fetch (non funziona, boh paolo parla troppo e non riesco a riflettere)
+    }
+  };
+
+  // Effettua una fetch iniziale senza codice IATA
   useEffect(() => {
-    fetchCards();
+    fetchCards(""); // Recupera i voli senza filtro inizialmente
   }, []);
 
   return (
-    <ListProvider>
       <div className="container-main mx-auto flex flex-col items-center bg-gradient-to-b from-emerald-100 h-full">
         <div className="container-top mx-auto w-full flex flex-col items-center">
           <div className="flex-1 flex w-full bg-emerald-100 border-4 border-emerald-100 border-dashed p-2 rounded-b-lg justify-center items-center">
@@ -42,10 +53,18 @@ function App() {
               </h1>
             </Link>
           </div>
-          <div className="navigation-top-bar flex flex-row gap-5  w-full ">
+          <div className="navigation-top-bar flex flex-row gap-5 w-full ">
             <div className="search-bar flex flex-row gap-3 w-1/3 ml-5">
-              <Input className="w-full" placeholder="Insert flight code here" />
-              <Button className="flex items-center gap-2 px-4 py-2">
+              <Input
+                className="w-full"
+                placeholder="Insert flight code here"
+                value={flightCode} 
+                onChange={(e) => setFlightCode(e.target.value)} 
+              />
+              <Button
+                className="flex items-center gap-2 px-4 py-2"
+                onClick={handleSearch} 
+              >
                 <Search />
                 Search
               </Button>
@@ -63,7 +82,6 @@ function App() {
         <CardList cards={cards} />
         <Outlet />
       </div>
-    </ListProvider>
   );
 }
 
